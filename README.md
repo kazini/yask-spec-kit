@@ -1,13 +1,15 @@
-### **Spec-Development System**
-Transform feature ideas into structured specifications through AI-guided Requirements → Design → Tasks → Implementation workflow.
+### **Kiro-like Spec-Dev System: **
 
-Yet Another Spec-Kit. Go figures! I based this spec-kit mainly using Kiro's rules and guidelines and complimented with documentation from a few others, like user-created and GitHub's own spec-kit. I wasn't satisfied with any of them. This format *should* be compatible with Kiro.
+
+**Yet Another Spec-Kit.** Go figures! I based this spec-kit mainly using Kiro's rules and guidelines and complimented with documentation from a few others, like user-created and GitHub's own spec-kit. I wasn't satisfied with any of them. This format *should* be compatible with Kiro.
 
 Reports on performance and improvements are welcomed! Best of luck with your projects.
 
 *A catchier and not-so-generic name is direly needed. -Kaz*
-
+__________
 *Requires: Git*
+
+Transform feature ideas into structured specifications through AI-guided Requirements → Design → Tasks → Implementation workflow.
 
 **1. Gemini CLI Setup**
 *   **Manual Installation:**
