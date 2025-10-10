@@ -23,7 +23,7 @@ cp -r ./.spec-dev "$CURSOR_RULES_DIR/"
 echo "Creating spec-dev-agent.mdc with Cursor frontmatter..."
 cat > "$CURSOR_RULES_DIR/spec-dev-agent.mdc" << 'AGENT_EOF'
 ---
-description: "Core Agent Persona and Contextual Documentation Loader"
+description: "Spec-Driven Development Agent"
 alwaysApply: true
 globs:
 - ".spec-dev/**/*"
