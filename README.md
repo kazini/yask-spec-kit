@@ -6,7 +6,7 @@ Reports on performance and improvements are welcomed! Best of luck with your pro
 
 *A catchier and not-so-generic name is direly needed. -Kaz*
 __________
-*Requires: Git*
+*(Windows) Requires: Git for Windows, for Bash*
 
 Transform feature ideas into structured specifications through AI-guided Requirements → Design → Tasks → Implementation workflow.
 
