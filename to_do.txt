@@ -4,7 +4,7 @@
 - finish fixing install-gemini installer for bash error and inefficiency
 
 ## TEST THE DAMN THING! Gemini Tests:
-- Stop it constantly asking metadata like feature name and author, allow it to come up with it itself, remove author one. actually place metadata on specific separate documents instead of all of them.
+
 - Doesn't work as well without loading all documents, or at least the main ones, sans the template and examples ones.
 
 ? Don't ask so often about if requirements meet the expectation and criteria. -keeps asking for design.. maybe valid? It should be explaining an outline of what it did as explanation and summary, with the why's and how. locate placating context and tone down.
@@ -13,8 +13,6 @@
 ? 
 
 - No need to label all requirements with numbers, mixes things up and makes lots of edits required on small changes.
-- metadata still being added to files such as requirements.md when it should go on .metadata | honestly, a lot of this metadata... it should be optional to enable/use, it isn't doing much except eating tokens and time.
-- requirements and design, "Structured Data", "Design Decisions", both AI Consumption in documents where it isn't as relevant and duplicates info, adds extra redundant info, should not appear as .json on these documents, really
 
 - scripts are dependant on some extensions and don't play as nicely with windows, consider python or straight-up json context for the AI to do its own functions following step instructions, unless they're long and complex and precise or specialized.
 
@@ -22,4 +20,6 @@
 
 ## CONTINUE TESTING FROM TASK.MD, SELECT TASK!
 ? add recovery point of where we left off? how does it recover and review project status when reloading?
+
+_________
 

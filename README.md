@@ -2,9 +2,10 @@
 
 **Yet Another Spec-Kit.** Go figures! I based this spec-kit mainly using Kiro's rules and guidelines and complimented with documentation from a few others, like user-created and GitHub's own spec-kit. I wasn't satisfied with any of them. This format *should* be compatible with Kiro.
 
-Reports on performance and improvements are welcomed! Best of luck with your projects.
+**Key difference from Kiro**: This is Kiro's methodology made explicit and platform-independent. Same principles, same workflow, same results, but documented for use with any AI system or IDE. Potentially scales better across teams, tools, and complex projects using explicit documentation patterns. See `report.md` for an AI-generated evaluation.
 
-*A catchier and not-so-generic name is direly needed. -Kaz*
+Reports on performance and suggestions for improvements are welcomed! Best of luck with your projects.
+
 __________
 *(Windows) Requires: Git for Windows, for Bash*
 
@@ -30,4 +31,7 @@ The core components of this system are:
 *   `.spec-dev/`: Contains all supporting system configurations, tools, and detailed documentation.
 *   `.specification/`: This is where you'll store your project's development specifications.
 
-All in-depth documentation, covering core principles, methodology, interaction patterns, prompting strategies, and implementation support (templates, scripts, examples), is organized within the `.spec-dev/` directory. For a complete overview and navigation, please refer to `.spec-dev/overview.md`.
+All in-depth documentation, covering core principles, methodology, interaction patterns, prompting strategies, and implementation support (templates, scripts), is organized within the `.spec-dev/` directory. For a complete overview and navigation, please refer to `.spec-dev/overview.md`.
+
+#### **System Development & Maintenance**
+When working on editing this instruction set itself, reference `.spec-dev/system/sys_dev_checklist.md` for the proper maintenance process and quality gates.

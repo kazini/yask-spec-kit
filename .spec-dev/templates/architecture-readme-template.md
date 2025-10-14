@@ -36,7 +36,6 @@ architecture/
 
 ### From Main Design
 - **[Main Design Document](../design.md)** - High-level architecture overview
-- **[Data Model](../data-model.md)** - Detailed data structures
 
 ### To Implementation
 - **[Tasks Document](../tasks.md)** - Implementation task breakdown
@@ -67,4 +66,4 @@ Key architectural decisions are documented in the main design.md file with refer
 1. Update relevant architecture documents
 2. Update main design.md with references
 3. Verify task breakdown still accurate
-4. Run health check to validate changes
+4. Validate changes with user review

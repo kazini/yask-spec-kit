@@ -9,15 +9,10 @@ project-root/
 │   ├── design.md               # HOW we'll build it
 │   ├── tasks.md                # Implementation steps
 │   ├── map.md                  # Project structure and status
-│   ├── architecture/           # Detailed architectural specs
-│   │   ├── core-systems/       # Core component specifications
-│   │   ├── interfaces/         # API and data model specs
-│   │   └── integration/        # System integration patterns
-│   ├── data-model.md           # Data structures and schemas
-│   └── .metadata/              # Separated metadata
-│       ├── spec-metadata.json  # Core specification info
-│       ├── health-status.json  # Health and compliance tracking
-│       └── progress.json       # Task progress and completion
+│   └── architecture/           # Detailed architectural specs
+│       ├── core-systems/       # Core component specifications
+│       ├── interfaces/         # API specifications
+│       └── integration/        # System integration patterns
 ├── src/                        # Implementation code
 ├── tests/                      # Test suites
 └── docs/                       # Generated documentation
@@ -33,23 +28,31 @@ project-root/
 
 ### Detailed Specifications
 - **architecture/**: Detailed technical specifications by system area
-- **data-model.md**: Data structures, schemas, and relationships
 
-### Metadata (Automated)
-- **spec-metadata.json**: Status, phase, version, dependencies
-- **health-status.json**: Health score, issues, compliance tracking
-- **progress.json**: Task completion and progress metrics
+## Navigation Guide
+
+### By Development Phase
+- **Planning**: [Requirements](requirements.md) → [Design](design.md) → [Tasks](tasks.md)
+- **Implementation**: [Tasks](tasks.md) → Implementation Code
+- **Validation**: [Testing Strategy](design.md#testing-strategy) → [Acceptance Criteria](requirements.md#acceptance-criteria)
+
+### By Component
+- **Core Systems**: [Component A](architecture/component-a.md) → [Component B](architecture/component-b.md)
+- **Integration**: [System Integration](architecture/integration.md)
+
+### Cross-Reference Patterns
+- **Internal References**: *See [Detailed Architecture](architecture/component-name/detailed-spec.md) for comprehensive information.*
+- **Requirement Traceability**: _Requirements: 1.1, 1.2, 4.6_
+- **Document Relationships**: Links between requirements → design → tasks → implementation
 
 ## Project Status
 
 ### Current Phase
 **Phase**: [requirements|design|tasks|implementation]
 **Status**: [draft|approved|implemented]
-**Health Score**: [Run: `./.spec-dev/scripts/spec-health.sh [feature-name]`]
 
 ### Development Progress
-**Tasks**: [Run: `./.spec-dev/scripts/task-progress.sh [feature-name]`]
-**Completion**: [X]% complete
+**Completion**: [X]% complete (based on task checkboxes)
 
 ## Document Relationships
 
@@ -71,20 +74,10 @@ requirements.md (WHAT) → design.md (HOW) → tasks.md (WHEN) → implementatio
 - **architecture/**: Detailed specification changes, new system components
 - **data-model.md**: Data structure changes, schema updates
 
-### Metadata Updates (Automated)
-```bash
-# Update specification status
-./.spec-dev/scripts/spec-meta.sh update [feature-name] --status approved --phase design
-
-# Update task progress
-./.spec-dev/scripts/task-progress.sh [feature-name] T-001 completed
-
-# Update health metrics
-./.spec-dev/scripts/health-update.sh [feature-name] --score 95
-
-# Run health check
-./.spec-dev/scripts/spec-health.sh [feature-name] --json
-```
+### Status Updates
+- Update task checkboxes in tasks.md as work progresses
+- Update phase status in map.md when transitioning between phases
+- Use validation tools only when document quality is questionable
 
 ### Review Process
 1. **Requirements**: Stakeholder review → Technical feasibility
@@ -120,7 +113,7 @@ requirements.md (WHAT) → design.md (HOW) → tasks.md (WHEN) → implementatio
 - **Specifications**: Descriptive names (requirements.md, design.md)
 - **Architecture**: System-based organization (core-systems/, interfaces/)
 - **Implementation**: Follow project conventions
-- **Metadata**: Automated JSON files in .metadata/
+
 
 ### Directory Principles
 - **Separation of concerns**: Specs, code, tests, docs in separate directories
