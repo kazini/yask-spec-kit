@@ -35,3 +35,5 @@ All in-depth documentation, covering core principles, methodology, interaction p
 
 #### **System Development & Maintenance**
 When working on editing this instruction set itself, reference `.spec-dev/system/sys_dev_checklist.md` for the proper maintenance process and quality gates.
+
+*Special thanks to jasonkneen for their Kiro documentation set as a point of reference for the creation of this instruction set.*
