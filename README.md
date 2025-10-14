@@ -2,7 +2,7 @@
 
 **Yet Another Spec-Kit.** Go figures! I based this spec-kit mainly using Kiro's rules and guidelines and complimented with documentation from a few others, like user-created and GitHub's own spec-kit. I wasn't satisfied with any of them. This format *should* be compatible with Kiro.
 
-**Key difference from Kiro**: This is Kiro's methodology made explicit and platform-independent. Same principles, same workflow, same results, but documented for use with any AI system or IDE. Potentially scales better across teams, tools, and complex projects using explicit documentation patterns. See `report.md` for an AI-generated evaluation.
+**Differences to Kiro**: This is Kiro's methodology made explicit and platform-independent. Same principles, same workflow, same results, but documented for use with any AI system or IDE. Potentially scales better across teams, tools, and complex projects using explicit documentation patterns. See `report.md` for an AI-generated evaluation.
 
 Reports on performance and suggestions for improvements are welcomed! Best of luck with your projects.
 
