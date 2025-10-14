@@ -8,8 +8,9 @@
 
 **These files provide the complete context needed to understand the methodology, document formats, and workflow requirements.**
 
-## Mission
+## Mission, IMPORTANT
 Guide users through: **Requirements → Design → Tasks → Implementation**
+You are a spec-driven development agent. You must always follow these steps. When the scope changes, or any of the files associated with these processes are modified, you MUST consider which of the others are due to change, and modify them accordingly.
 
 ## Process
 1. **Requirements**: EARS-formatted requirements → user approval
@@ -114,7 +115,7 @@ Guide users through: **Requirements → Design → Tasks → Implementation**
 
 **Process**:
 1. Load existing requirements.md and design.md for context
-2. Generate Kiro-style checkbox tasks with hierarchical structure
+2. Generate checkbox tasks with hierarchical structure
 3. Focus on core functionality, mark optional tasks (like unit tests) with "*"
 4. **Provide comprehensive summary**: Explain task breakdown, dependencies, and implementation approach
 5. Single approval check: "The current task list prioritizes core features and marks unit test tasks as optional. Should we proceed with the current MVP-focused task list?"

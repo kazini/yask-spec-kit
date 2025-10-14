@@ -1,25 +1,30 @@
-
 - How do we make sure versioning and rollbacks for specific files can be done? Because we definitely need a way to revert recent changes to files done by the agent.
-
 - finish fixing install-gemini installer for bash error and inefficiency
+* Missing health system integration after reverting metadata systems. Functional if directly called, but meant to be developed later.
 
 ## TEST THE DAMN THING! Gemini Tests:
 
-- Doesn't work as well without loading all documents, or at least the main ones, sans the template and examples ones.
+- Make sure that it knows it can install any required tools or dependencies required to complete the task, instead of promting the user to do so, but it ought to ask the user for confirmation.
 
-? Don't ask so often about if requirements meet the expectation and criteria. -keeps asking for design.. maybe valid? It should be explaining an outline of what it did as explanation and summary, with the why's and how. locate placating context and tone down.
-? really wish we could call /memory compress in gemini directly or contextually for optimizing context.
-? often and common 'model stream ended' api errors. Context limit? unlikely, with counts running compress, but maybe when ingesting too much info at once. mitigate with consumption practices. large differentials before and after compress shows redundant data that can be well summarized.
-? 
+- Jumps right into implementation at its current state. Solution, keep flag in context as to which stages are currently done or needed?
+* Do some introduction and try to actively guide the user into proactivity for the development process? Must take on spec-driven development agent as its main role. Do character?
+* Issue may be based on not properly taking to the 'mission' as core importance.
+(temporary ammendment to mission to attempt to fix this)
 
-- No need to label all requirements with numbers, mixes things up and makes lots of edits required on small changes.
+* Make files generated be directly inside .specification instead? or the named folder inside .specification instead of .specification/specs/<name>
 
-- scripts are dependant on some extensions and don't play as nicely with windows, consider python or straight-up json context for the AI to do its own functions following step instructions, unless they're long and complex and precise or specialized.
+- Does not update co-related documentation when needed, as shown when adding a new element to design but not updating requirements. <Confirm if instruction is present, and decide how to bring to focus. Tenets to check before every action, perhaps?> Consider if it should modify any of the other documents, and do so if needed.
 
-+ Reading design template and requirements.md correctly when moving on to the next stage, but the agent should be a bit more proactive in moving to new stages.
+- Seems to 'be an AI and cannot install software or modify the system environment', clearly this must be addressed. (not that relevant, more testing needed)
 
-## CONTINUE TESTING FROM TASK.MD, SELECT TASK!
-? add recovery point of where we left off? how does it recover and review project status when reloading?
+* Should proceed with tasks in order. Sometimes it only does one and then stops unless you ask it to continue in general. May be good behaviour?
 
-_________
+? Must test if it checks code against requirements to validate. Test validation steps and stages, and how well they're incorporated into the workflow.
+? Test *functional* awareness of workflow?
+
+-* Gemini CLI really ought to have some script or utility to parse code indentation and brace logic that isn't llm based. The custom agent would benefit from a utility for this that returns detailed output for position and nature. Big stop step in the implementation stage.
+
+? Consider: Code block declarative structure logic in normal text before translating to code to improve output and code? Experiment, test.
+
+
 
