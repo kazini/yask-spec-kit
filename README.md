@@ -31,6 +31,6 @@ The core components of this system are:
 *   `.yask/`: Contains all supporting system configurations, tools, and detailed documentation.
 *   `blueprint/`: This is where you'll store your project's development specifications.
 
-All in-depth documentation, covering core principles, methodology, interaction patterns, prompting strategies, and implementation support (templates, scripts), is organized within the `.yask/` directory. For a complete overview and navigation, please refer to `.yask/overview.md`.
+All in-depth documentation, covering core principles, methodology, interaction patterns, prompting strategies, and implementation support (templates, scripts), is organized within the `.yask/` directory.
 
 *Special thanks to jasonkneen for their Kiro documentation set as a point of reference for the creation of this instruction set.*

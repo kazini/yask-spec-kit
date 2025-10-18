@@ -82,3 +82,4 @@ _________
 > Need to test both 2.21 and 2.21_cf side by side.
 Gemini TEST 4:
 
+* Must make installer(s) also remove the install-cursor file.
