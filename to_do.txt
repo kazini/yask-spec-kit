@@ -1,0 +1,84 @@
+- How do we make sure versioning and rollbacks for specific files can be done? Because we definitely need a way to revert recent changes to files done by the agent.
+- finish fixing install-gemini installer for bash error and inefficiency
+* Missing health system integration after reverting metadata systems. Functional if directly called, but meant to be developed later.
+
+## TEST THE DAMN THING! Gemini Tests, 1st
+
+- Make sure that it knows it can install any required tools or dependencies required to complete the task, instead of prompting the user to do so, but it ought to ask the user for confirmation. (Was Addressed in Next Version)
+
+* Make files generated be directly inside .specification instead? or the named folder inside .specification instead of .specification/specs/<name>
+
+- Does not update co-related documentation when needed, as shown when adding a new element to design but not updating requirements. <Confirm if instruction is present, and decide how to bring to focus. Tenets to check before every action, perhaps?> Consider if it should modify any of the other documents, and do so if needed. (Was Addressed in Next Version)
+
+- Seems to often say 'be an AI and cannot install software or modify the system environment', clearly this must be addressed. (not that relevant, more testing needed) (Was Addressed in Next Version)
+
+* Should proceed with tasks and continue the list. Sometimes it only does one and then stops unless you ask it to continue in general. May be good behavior? (Was Addressed in Next Version)
+
+? Must test if it checks code against requirements to validate. Test validation steps and stages, and how well they're incorporated into the workflow.
+? Test *functional* awareness of workflow?
+
+-* Gemini CLI really ought to have some script or utility to parse code indentation and brace logic that isn't llm based. The custom agent would benefit from a utility for this that returns detailed output for position and nature. Big stop step in the implementation stage.
+
+? Consider: Code block declarative structure logic in normal text before translating to code to improve output and code? Experiment, test.
+_________
+TEST 2:
+
+*? Starting dev testing when Gemini restarted, should try older version restarting Gemini and compare performances.
+
++ Set command file so that it tells user to restart gemini after install.
+
+- workflow json file isn't being read from custom folder, creates new .spec-dev folder and creates file inside, this is not desirable. Remove clause for create file could fix this? Since file is already always existing in the dynamically set folder when gemini environment reads it from its .gemini/.spec-sys folder.
+
+? must test if it can resume development and reads the dynamic project documentation when it boots up, not just the instruction set.
+
+- ...why is it creating a "spec-dev-overview.md" file in the root project folder?!  maybe change the instruction file 'overview.md' into something else to avoid fugue miscontextualization of working schema
+
+? Consider: perhaps it shouldn't make a sub-folder in ".specification"... change to "blueprint" and the ".spec-dev" into ".yask"? Would need to rename absolutely all references to folders and files, including in install scripts and templates.
+
+? Must compare the documents created by both old and newer version for quality and comprehensiveness. Must do a few tests with each version and same prompt.
+
+- Keeps asking for review of requirements even with minor additions if amendments are proposed. Flow of phases may be too strict and not allow flexible iteration for back and forth, so that requirements and design are amended concurrently as the user states new features, goals, or what they want. The agent should also cleanly state in chat as a way to proactively clarify and suggest at the same time, when it's not clear how it should be implemented and gives too much room for interpretation, and it's then that it should ask for confirmation, able to smoothly do the things it would if it doesn't require confirmation when the user says something simple like 'I also want X and Y' or 'It should be D and C with M'.
+-+ as an add to the above, it should be able to resume its current stage if required. Perhaps the firm workflow stage approach is too rigid, and should act as hierarchy priority of what things should comprehend the project elements, first the requirements, then the expansive clarification design, and both are needed and checked to do the tasks document, which then is needed to perform actual implementations? Must think about the best way to implement this onto the instruction set.
+
+?- Could benefit from wondering what each project may require and proposing to the user what the project could look like and having a conversation about it before moving on to the stages.
+
+- Seems lacking on the 'think what the user means' or perhaps it overthinks it? Asked it for a 'bird that moves around and flies when I press keys' and the bird literally moves side to side with no user control, can only fly when spacebar is pressed.
+
+? Could benefit from proactively suggesting improvements or implementations at certain stages, before tasks, for example. The proactivity instructions seem to have not done much on that interactivity and proactive *reasoning* and communication area. Should check and compare with previous version for results.
+
+- It's looking like the workflow file isn't doing much for us. The creation of the files is already declared by the existence of the files, and specification blueprint and development is a continuous process.
+
+- installer should also delete "fix_bash" and "install-cursor" if they exist.
+
+? Seems like the older version works much better in terms of giving the user a summary of what it has done and projecting an understanding of what the user wants and what an application developed would entail as it creates requirements.md and specifications in EARS, perhaps because it's adding it to its own existing understanding and instructions on what to do when asked to develop something? Better overarching design decisions, too. May still benefit from wondering what the user wants and expanding on this. Perhaps test with another reasoning model.
+
+? Older version suffers from not proactively trying to address lacking certain resources and trying to create or install them. Tools are one, asset creation is another.
+? Older version isn't as good as the modern one in trying to create geometrical assets creatively. Errors cascading and showing when dealing with requests, not addressing documentation files. Way to address code issues: Create *pseudocode* files as reference.
+
+_________
+
+Gemini TEST 3:
+
+- No longer does spec driven development by default, once again you have to ask it to use spec-driven development (included in /spec), would be best to add something to incorporate to existing methods to make apps, keywords and cues. Works best when using /spec to initialize context, for now.
+
+? Does summaries again, now.
+
+* Add check at first to go over project files and evaluate the project itself and cross-reference files to see if they're complete and fine.
+
+- It proposed design, and the user proposed a new change, so it updated design.md... but not the requirements. It's once again failing to consider all existing documents and ask if it should change them to reflect the new changes. It integrated them when a second feature was asked, along with that secondary feature.
+
+- so, reliant on the model: Continues to have code analysis issues when it comes to finding indentations. Way to address code issues: Create *pseudocode* files as reference; This would be flexible and allow better implementation of the documents when coding, perhaps. Must evaluate this consideration. Perhaps as a fallback for complex code not working, extracting comments as the pseudocode, reconstructing pseudocode logic, and then comparing and fixing, or recreating the file? Must evaluate. Could be part of a health/integrity tool for the future. It would be good to have the option as also to read existing user-written pseudocode files, or ask it to follow that principle. Is there an existing model standard for pseudocode that we could use?
+
+- It's trying to install a dependency globally, add principles to try to work locally when possible, when it can, when it comes to things like this?
+
+? It's decently proactive. Satisfied with this. Good proactive reasoning once it begins addressing issues. Could use further improvements on 'dreaming' or idealizing ideas and what they could be, and talking with the user to explore the approach and end ideal, prompting for elaboration in a chat.
+
+- Seems to forget about limitations sometimes, ex., runs the pygame to 'test' but has no context to get data from, assumes everything is fine, assumes *it* can verify the functioning to that level. Result of wording of some proactivity guidelines, perhaps? Could tell it to evaluate what data it can get as part of limitation evaluation directives, and to potentially incorporate debug data in order to evaluate, but without making these directives overly complex or specific, allowing for an intelligent agent to incorporate them into their natural procedures, too.
+
+- Its writing seems to have become a bit too... stiff and direct, to the point. May be due to my own custom instructions for base Gemini, I should be testing this without those now that I think about it... hm. Further testing needed.
+
+- It failed to edit the tasks file to keep track of things... and it said sorry, but that they were implemented anyways, and didn't try other methods... THIS IS BAD.
+_________
+> Need to test both 2.21 and 2.21_cf side by side.
+Gemini TEST 4:
+
