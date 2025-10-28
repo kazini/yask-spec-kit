@@ -33,4 +33,4 @@ The core components of this system are:
 
 All in-depth documentation, covering core principles, methodology, interaction patterns, prompting strategies, and implementation support (templates, scripts), is organized within the `.yask/` directory.
 
-*Special thanks to jasonkneen for their Kiro documentation set as a point of reference for the creation of this instruction set.*
+*Special thanks to [@jasonkneen](https://github.com/jasonkneen) for their Kiro documentation set as a point of reference for the creation of this instruction set.*
