@@ -42,17 +42,27 @@ __________
 
 * Must make installer(s) also remove the install-cursor file.
 - Must fix cursor implementation automation, currently as a 'mode' or modified custom instruction for Plan mode, only tried as a custom mode.
+- Add VS-based profile for Roo and Kilo.
 
-* Adding Validation and Testing guidelines
-
--! remove dependency on spec.sh script.
+-! remove dependency on spec.sh script. Almost fully achieved.
+? ...should we remove installer dependency altogether and bundle different zip releases for specific agent wrappers?
 
 -! refine cross-documentation workflow, check that when updating design, it checks if it needs to update requirements, make more open to also changing ALL docs
 
 ? Centralized prompt, must check performance, as preemptive evaluation indicates degradation of context comprehension. More testing required.
+	* Initial testing suggests 'collage' centralized prompt produces worse results in models with sub-par instruction adherence, results degrade versus central+3 instruction method.
+	* Initial versions of 'jigsaw' centralized prompt are created, but must be further refined, validating results and focusing on format and wording inducing results and adherence.
+		> This seems to suggest that actually having 4 different files with redundancies, even if loaded at a secondary point, improve functionality.
+		> This seems... odd, as it all ends up in the same context, so 'collage' centralized prompt should perform identically.
 
 
 * Future:
+	* Adding Validation and Testing guidelines and procedures
+	* Testing efficacy and then adding procedures for Pseudocode-based code parsing and creation
+	
 	- look into maybe incorporating some more best practices and principles from the kiro guide docs.
-	? Work on integrations.
+	? Work on integrations. Methods to recognize and use specific MCP tools such as Tree-Sitter and code health and parsing/validation tools would be meaningful, but drift the project away from its current flexiblity.
+	
+	* Evaluate what adding a script could meaningfully contribute with, as to keep the prompt flexible and agnostic. *Could help with auto-updating it and with code validation.*
+	
 ```
