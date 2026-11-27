@@ -1,0 +1,13 @@
+# What the tools do with each folder. One file, yours: edit it with `ws folders add|set|remove` or by hand.
+# listed: ws map shows it. searched: ws find and brief return it. checked: ws check validates it.
+# generated: tools write it and never read it. A folder with no entry is content (all true) unless a name
+# in its path starts with a dot: then it is out of the way (all false). Asking for a folder by path always works.
+folders:
+  - { path: .archive, listed: false, searched: false, checked: false, purpose: retired }
+  - { path: _steering, listed: false, searched: false, checked: true, purpose: steering }
+  - { path: _steering/.ws, listed: false, searched: false, checked: true, purpose: project-data }
+  - { path: _steering/.ws/cache, generated: true, purpose: generated }
+  - { path: _steering/.ws/snapshots, generated: true, purpose: generated }
+  - { path: _steering/.ws/reports, generated: true, purpose: generated }
+  - { path: _workboard, listed: true, searched: true, checked: true, purpose: working }
+  - { path: _workboard/.cold, generated: true, purpose: cold-storage }

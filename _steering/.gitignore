@@ -1,0 +1,9 @@
+# YASK usage: never commit these.
+.ws/snapshots/
+.ws/cache/
+.ws/reports/
+.ws/backups/
+.yask_cache/
+# ---------------
+
+# CUSTOM GITIGNORE RULES BELOW.

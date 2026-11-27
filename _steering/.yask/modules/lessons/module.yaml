@@ -1,0 +1,7 @@
+name: lessons
+description: Lessons learned, one file per area, with a path from repeated lessons to automated checks.
+default: false
+requires: [core]
+where:
+  - { holds: "A lesson learned, in the file for its area", path: "docs/lessons/", kind: canon }
+checks: [front-matter, lessons-have-trigger]

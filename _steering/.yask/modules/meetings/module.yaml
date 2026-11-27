@@ -1,0 +1,9 @@
+name: meetings
+description: Capture meetings (or any raw item) as evidence, then distill reviewable proposals from them.
+default: true
+requires: [core]
+where:
+  - { holds: "A meeting or transcript (summary plus verbatim text)", path: "_workboard/meetings/", kind: raw }
+  - { holds: "A proposed decision, open item, task or state change awaiting review", path: "_workboard/proposals/", kind: working }
+retention: raw-meetings
+checks: [front-matter, redaction-scan, anchors-resolve]

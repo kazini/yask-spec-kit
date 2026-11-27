@@ -1,0 +1,5 @@
+# Exceptions to `ws check`, by finding code (the second column of `ws check`, or * for every code).
+# A value is a path: a file, a folder or a glob. Secret findings cannot be listed here; use `ws secret allow`.
+# `ws check --all` and `--json` show what was set aside, so exceptions are never silent.
+ignore:
+  front-matter: [README.md, _steering/.yask/YASK.md]   # reader-facing files, not steering documents

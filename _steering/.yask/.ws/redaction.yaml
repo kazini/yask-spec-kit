@@ -1,0 +1,31 @@
+# Patterns applied before saving (ingest) and before committing (save). A starting set: extend per client.
+# Regexes are PCRE-style: use `rg` or `grep -P` for a manual check.
+# action: redact = replace with [REDACTED:<name>] at ingest; flag = stop and ask a person (a match ws is sure about is moved to .secrets).
+# sure: false (flag only) = save and autosave never move it: ws reports it and the agent decides (ws secret move / allow). Used where a regex
+# cannot tell the real thing from a lookalike. Ingest also moves an unsure match when the text itself calls it a secret ("the password is ...").
+# shape_only: true = matched by its shape alone (cards and IBANs are not checksum-verified): nothing moves it but `ws secret move`.
+# A pattern may name groups: (?P<val>...) is the part that is the secret, (?P<label>...) names its key; without val the whole match is the secret.
+patterns:
+  - { name: private-key, regex: '-----BEGIN [A-Z ]*PRIVATE KEY-----', action: flag }
+  - { name: aws-access-key-id, regex: 'AKIA[0-9A-Z]{16}', action: flag }
+  - { name: bearer-token, regex: '(?i)bearer\s+[A-Za-z0-9._~+/=-]{20,}', action: flag }
+  - { name: assigned-secret, regex: '(?i)(password|passwd|secret|api[_-]?key|token)\s*[:=]\s*\S{6,}', action: flag }
+  - { name: spoken-secret, sure: false, regex: '(?i)\b(?P<label>password|passwd|passphrase|passcode|secret|api[ _-]?key|token|pin)\b(?:\s+\w+){0,4}?\s*(?:\b(?:is|was|are|will be|should be)\b|[:=])\s*["\x27`(]?(?!https?://|\{\{|\.{0,2}/)(?P<val>(?=\S*\d|(?-i:\S*[a-z]\S*[A-Z])|\S*[!@#$%^&*])\S{6,})', action: flag }
+  - { name: github-token, regex: 'gh[pousr]_[A-Za-z0-9]{30,}', action: flag }
+  - { name: provider-key, regex: '(sk_live_|sk-ant-|xox[baprs]-)[A-Za-z0-9_-]{10,}', action: flag }
+  - { name: google-api-key, regex: 'AIza[0-9A-Za-z_-]{35}', action: flag }
+  - { name: huggingface-token, regex: 'hf_[A-Za-z0-9]{30,}', action: flag }
+  - { name: openai-style-key, regex: 'sk-[A-Za-z0-9_-]{40,}', action: flag }
+  - { name: jwt, regex: 'eyJ[A-Za-z0-9_-]{8,}\.eyJ[A-Za-z0-9_-]{8,}\.[A-Za-z0-9_-]*', action: flag }
+  - { name: connection-string, regex: '(?i)\b[a-z][a-z0-9+.-]*://[^\s:/@]*:[^\s@/]+@[A-Za-z0-9._\-\[\]:,%]*[A-Za-z0-9\]](?:/[^\s\x22\x27<>)\]]*[^\s\x22\x27<>)\].,;:!?])?', action: flag }
+  - { name: payment-card, regex: '\b(?:4\d{3}|5[1-5]\d{2}|2[2-7]\d{2}|6011|65\d{2})(?:[ -]?\d{4}){3}\b|\b3[47]\d{2}[ -]?\d{6}[ -]?\d{5}\b', action: flag, sure: false, shape_only: true }
+  - { name: iban, regex: '\b[A-Z]{2}\d{2}(?: ?[A-Z0-9]{4}){2,7}(?: ?[A-Z0-9]{1,3})?\b', action: flag, sure: false, shape_only: true }
+  - { name: email, regex: '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}', action: redact }
+  - { name: phone, regex: '(?<![\w+])\+(?=(?:[ .()-]*\d){8})\d{1,3}[ .-]?(?:\(\d{1,4}\)[ .-]?)?\d{1,4}(?:[ .-]?\d{2,4}){1,4}\b|(?<![\w(])\(\d{3}\)[ .-]?\d{3}[ .-]\d{4}\b', action: redact }
+# A harmless sample (a documented format, a test value) is exempt only by `ws:allow` on its line, or by listing the
+# fingerprint that ws prints. Nothing is exempt for sitting near the word "example".
+allow: []
+manual_review:
+  - personal data that is not needed (names, health, financial)
+  - phone numbers without a + or parentheses, card or account numbers in other formats, national ids: no pattern here can tell them from other numbers
+  - client confidential material outside the contract's scope

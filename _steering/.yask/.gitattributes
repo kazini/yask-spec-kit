@@ -1,0 +1,16 @@
+# YASK's own shipped files: LF so line anchors (path#Lnn) and hashes agree on every system.
+*.md text eol=lf
+*.txt text eol=lf
+*.py text eol=lf
+*.js text eol=lf
+*.mjs text eol=lf
+*.ts text eol=lf
+*.yaml text eol=lf
+*.toml text eol=lf
+LICENSE text eol=lf
+NOTICE text eol=lf
+# The shims and launchers here are shell scripts, unlike the polyglot root launcher.
+_toolstore/**/ws text eol=lf
+_toolstore/**/yask text eol=lf
+# The cmd shims here are Windows-only scripts; the root setup script is covered at the root.
+*.cmd text eol=crlf

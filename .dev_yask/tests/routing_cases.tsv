@@ -1,0 +1,129 @@
+we agreed to drop the export feature	record-decision
+the PM changed the deadline to March	record-decision
+write requirements for the payment module	software-standards
+add a new endpoint to the sync service	software-standards
+write the design doc for authentication	software-standards
+update the architecture doc for the queue component	software-standards
+the client sent a transcript from today's call	ingest-meeting
+write a summary of the meeting we had	ingest-meeting
+turn these meeting notes into tasks	extract-proposals
+approve the proposal and file it	promote-proposal
+I accidentally committed an API key	handle-secrets
+a password is needed to run the integration test	handle-secrets
+remove a large file from git history	purge-history
+what did we decide about the database	find-information
+who owns the billing integration	find-information
+clean up old files we no longer need	archive-and-retention
+we need to retire the stale docs and delete them after retention	archive-and-retention
+find duplicate or contradictory documents	consolidation-pass
+two of us are editing the same spec	collaborate
+push my changes	save-and-push
+commit and sync with the remote	save-and-push
+resume where the last session stopped	session-state
+create the docs folder for a new module	scaffold
+where does the glossary go	document-format
+how should I word this instruction strict or open	document-thinking
+I am about to change a document what should I check first	document-method
+summarise this long PDF report	delegate-to-subagent
+hand a huge folder read to a worker	delegate-to-subagent
+the stakeholder wants to push the launch to Q3	record-decision
+write acceptance criteria for the login flow	software-standards
+design the data model for orders	software-standards
+I found a token in the config file	handle-secrets
+transcripts from the client call need filing	ingest-meeting
+mine the email thread for action items	extract-proposals
+accept the proposed task and add it to the backlog	promote-proposal
+this folder is obsolete so move it out of the way	archive-and-retention
+the docs seem to contradict each other so do a spring clean	consolidation-pass
+my colleague and an agent are changing the same file	collaborate
+save my work and share a branch for review	save-and-push
+pick up where we left off yesterday	session-state
+where was the retry policy decided	find-information
+bootstrap the decisions folder	scaffold
+how do I phrase this rule so it is flexible	document-thinking
+make this document shorter without losing meaning	document-format
+split this research across several workers	delegate-to-subagent
+someone committed customer data to git so rewrite history	purge-history
+reverse the earlier decision on the database	record-decision
+assess the impact of changing this spec before I edit it	document-method
+the contractor wants more scope in the same budget	record-decision
+spec out the notification service	software-standards
+we need a build plan for the first prototype stage	software-standards
+the vendor emailed a password for the sandbox	handle-secrets
+record the standup that just ended	ingest-meeting
+what did the client say about deadlines in the kickoff	find-information
+free up disk space by removing old raw recordings	archive-and-retention
+audit the workspace for stale or duplicate documents	consolidation-pass
+two agents are both editing tasks.md	collaborate
+commit my changes and push to the remote	save-and-push
+continue the task I left half done	session-state
+set up the lessons folder for the first time	scaffold
+should this instruction be strict or invitational	document-thinking
+read this 200 page report and report back the key points	delegate-to-subagent
+a secret ended up in git history and must be removed	purge-history
+the board approved a bigger budget for phase two	record-decision
+draft the interface spec for the billing service	software-standards
+I pasted an access key into the chat by mistake	handle-secrets
+file the notes from this morning's workshop recording	ingest-meeting
+pull the open questions out of the call transcript	extract-proposals
+we no longer need the old prototype files	archive-and-retention
+review the whole workspace for drift and duplicates	consolidation-pass
+merge conflict in the roadmap because two people edited it	collaborate
+share my branch so someone can review it	save-and-push
+what is the current status and what is left to do	session-state
+where did we record the decision about hosting	find-information
+create the evals folder	scaffold
+give a worker the job of reading all the contracts	delegate-to-subagent
+purge a leaked credential from git history	purge-history
+the client wants to push the launch back two weeks, record that	record-decision
+we agreed to move the go-live date to January	record-decision
+leadership decided to postpone the migration until Q2	record-decision
+the board approved a bigger budget for the pilot	record-decision
+push my commits to the remote	save-and-push
+commit this work and push it for review	save-and-push
+move the old reports out of the way, they are obsolete	archive-and-retention
+someone emailed me the production database password	handle-secrets
+the email contains an API key, what do I do	handle-secrets
+I need the login for the staging server without pasting it into chat	handle-secrets
+pull the action items out of these emailed meeting notes	extract-proposals
+extract the open questions from this transcript	extract-proposals
+list the decisions mentioned in this chat export as proposals	extract-proposals
+what did we decide about the pricing tiers	find-information
+who owns the deployment checklist	find-information
+summarize this 200 page PDF for me	delegate-to-subagent
+summarise the whole report, it is too long for me to read	delegate-to-subagent
+offload the research on competitors to parallel workers	delegate-to-subagent
+file the summary of yesterday's client call	ingest-meeting
+where should the glossary live	document-format
+where do background notes on the project belong	document-format
+which folder holds the architecture decisions	document-format
+create a new folder for the research docs	scaffold
+set up the decisions folder for the first time	scaffold
+make this document shorter	document-format
+move the stale reports folder out of the way	archive-and-retention
+move the obsolete notes to the archive	archive-and-retention
+push the feature branch so a teammate can review it	save-and-push
+push back on the proposal and reject it	promote-proposal
+the client emailed us the meeting recording and transcript	ingest-meeting
+the email thread has a password in it, scrub it	handle-secrets
+mine this email thread for action items	extract-proposals
+what decisions were made about the API	find-information
+record the decisions from Tuesday's steering committee	record-decision
+pull the decisions out of the call transcript	extract-proposals
+summarize the meeting we just had with the client	ingest-meeting
+summarize what we know about the payment provider	find-information
+summarize all 40 interview transcripts in parallel	delegate-to-subagent
+what are the open questions on the project	find-information
+list the open questions from these notes as proposals	extract-proposals
+turn the meeting notes into a redacted record	ingest-meeting
+which folder does the glossary go in	document-format
+the folder is full of obsolete files, retire it	archive-and-retention
+commit the docs folder	save-and-push
+add background to the project overview, where does it go	document-format
+the background section is too long, condense it	document-format
+we reversed the decision to drop the export feature	record-decision
+the deadline is pushed to April by the sponsor	record-decision
+postpone the demo, the stakeholders agreed	record-decision
+set up the evals folder	scaffold
+a token was found in the notes file	handle-secrets
+email the credentials to the vendor	handle-secrets

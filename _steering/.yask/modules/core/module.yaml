@@ -1,0 +1,16 @@
+# Manifest: flat keys, inline lists and inline maps.
+name: core
+description: "Entry file, current status and tasks, the workboard, tools, archive and the periodic lifecycle procedures."
+default: true
+requires: []
+where:
+  - { holds: "Current status: stage, standing directions, focus (replace, do not append)", path: "status_log.md", kind: working }
+  - { holds: "Open tasks; finished items leave and the outcome lives in its owning document", path: "tasks.md", kind: working }
+  - { holds: "Planning and organizing: files in progress, proposals and raw material not yet reviewed (evidence, never canon)", path: "_workboard/", kind: working }
+  - { holds: "Open items that are not tasks: questions, pending decisions, risks, assumptions to verify, things waiting on someone", path: "_workboard/open-items.md", kind: working }
+  - { holds: "Reports from workers and subagents", path: "_workboard/reports/", kind: raw }
+  - { holds: "A tool made for the project's own work (not for running this workspace)", path: "_tools/", kind: any }
+  - { holds: "A tool that operates this workspace (comes with the steering)", path: "_steering/_toolstore/", kind: steering }
+  - { holds: "Retired material, keeping its relative path; its git history is deleted when it moves here", path: ".archive/", kind: any }
+retention: raw-reports
+checks: [front-matter, size-budget, redirector, links, orphans, generated-blocks]

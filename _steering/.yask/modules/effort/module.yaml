@@ -1,0 +1,10 @@
+name: effort
+description: Time and effort tracking. Define the format when a client needs it.
+default: false
+requires: [core]
+where:
+  - { holds: "Time and effort entries (human-reviewed before they are final)", path: "effort/", kind: working }
+notes: |
+  Hours are billing-relevant. Entries are reviewed by a human before they are final, never pushed
+  straight to main by an agent alone, and cross-checked against git blame.
+checks: [human-reviewed]

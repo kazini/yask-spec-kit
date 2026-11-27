@@ -1,0 +1,23 @@
+# Retention is set when a kind is created, not at cleanup time. The tool (or a person following
+# _steering/.yask/playbooks/archive-and-retention.md) executes this policy and logs each step.
+# Values are examples; set them to the client's contract.
+#
+# then: what falls due once an item has been in the tree for in_tree_days.
+#   review   (default) list it for a person to decide: keep, offload or archive. Changes nothing.
+#   offload  heavy or sensitive files go to cold storage outside git (ws git offload). History is untouched.
+#   archive  move it to .archive/ AND delete its git history (ws archive). That rewrites history, makes every
+#            collaborator re-clone, and needs a person's go-ahead. Choose it only when a contract or law requires
+#            the deletion; do not make it the default.
+raw-meetings:
+  in_tree_days: 90          # stays under _workboard/ for 90 days
+  then: review              # then a person decides; see "then" above
+  cold_after_days: 365      # heavy files move to cold storage; manifest + stub stay
+  history_purge: on-request-or-contract-end
+raw-reports:
+  in_tree_days: 60
+  then: review
+  cold_after_days: 365
+  history_purge: on-request-or-contract-end
+proposals:
+  in_tree_days: 30          # after approval or rejection
+  then: review

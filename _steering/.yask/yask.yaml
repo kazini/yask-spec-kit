@@ -1,0 +1,20 @@
+# YASK's own settings: everything about YASK in general and how it behaves, nothing specific to one project (those are in
+# _steering/.ws/config.yaml). It is part of the shipped layer, so it comes with a release and is mirrored by `ws update`.
+# Without this file the automatic update check does not run.
+update:
+  auto: true                  # check for a new release when ws runs (at most every interval_hours) and update _steering/.yask silently
+  repo: "kazini/yask-spec-kit" # owner/name of the GitHub repository whose releases carry the package
+  interval_hours: 24
+  commit: true                # commit each update by itself as "Updated YASK", onto main only: just the files it changed, never your own uncommitted work; false leaves it uncommitted
+  # Read by `ws update` from the NEW release. _steering/.yask/ is mirrored from the release; `reconcile` and `notify` say how
+  # changes reach the project's own files, which are never replaced. Paths are relative to _steering/.
+  # Methods: add-missing-keys (new settings; values the project chose are kept), add-missing-entries (new list items, matched
+  # by `key`), notify (leave the file alone and tell the person), ignore.
+  reconcile:
+    - { file: .ws/config.yaml, method: add-missing-keys }
+    - { file: .ws/check.yaml, method: add-missing-keys }
+    - { file: .ws/retention.yaml, method: add-missing-keys }
+    - { file: .ws/redaction.yaml, method: add-missing-entries, key: name }
+    - { file: .ws/folders.yaml, method: add-missing-entries, key: path }
+  # Messages shown once, after updating to or past `since`:
+  notify: []

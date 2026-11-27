@@ -1,0 +1,28 @@
+# Your project's ignore rules go here. YASK keeps its own in _steering/.gitignore and
+# _steering/.yask/.gitignore, so a release can be dropped onto a project that already
+# has a root .gitignore without touching it.
+
+# secrets and credentials: only files that are secrets by name or format. Never whole words like secrets* (they swallow documents).
+.env*
+.secrets
+.apikeys
+*.key
+id_rsa*
+*.pem
+
+# cold storage stays outside git; only manifests are tracked
+_workboard/.cold/
+.archive/.cold/
+
+# heavy raw media (keep outside git; record it in .archive/manifest.md)
+*.mp4
+*.mov
+*.wav
+*.mp3
+
+# release builds (regenerate with .dev_yask/build_release.py)
+dist/
+
+# tool caches (any Python tooling in the project)
+__pycache__/
+*.pyc

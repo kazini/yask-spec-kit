@@ -1,0 +1,17 @@
+YASK — Yet Another Spec-Kit
+Copyright 2026 Camilo Jourdan
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Project documents and code you create with YASK are yours; this notice covers YASK itself. When creating a copyrighted product using YASK, you may credit by mentioning the author, the product, or both; examples:
+  Built with YASK — https://github.com/kazini/yask-spec-kit
+  YASK — Camilo Jourdan
+  Camilo Jourdan (Knowledge Management / Operations Standards)
+
+If you publish a project developed with YASK, a mention in its README, docs or other forms of attribution is appreciated.
+
+Modified distributions should not imply they are official YASK releases.

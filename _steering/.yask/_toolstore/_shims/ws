@@ -1,0 +1,10 @@
+#!/bin/sh
+# ws shim: the same tool as yask (`ws help` is the guide). Python 3 on Linux, macOS and Git Bash. Works from here and from a copy in _shims/.
+here="$(dirname "$(readlink -f "$0")")"
+for py in python3 python; do
+  if command -v "$py" >/dev/null 2>&1; then
+    WS_PROG=ws exec "$py" "$here/../ws/ws.py" "$@"
+  fi
+done
+echo "ws: Python 3 was not found on the PATH" >&2
+exit 127

@@ -1,0 +1,8 @@
+name: decisions
+description: Decision records with deciders, assumptions and supersession, plus a register of rejected options.
+default: true
+requires: [core]
+where:
+  - { holds: "A decision, proposed or accepted, one per file", path: "docs/decisions/", kind: canon }
+  - { holds: "An option that was considered and rejected", path: "docs/decisions/rejected.md", kind: canon }
+checks: [decider-on-accepted, supersedes-resolves, filename-id, governing-flag]

@@ -1,0 +1,25 @@
+# Line endings for the whole project template. YASK's tool-specific rules live in
+# _steering/.yask/.gitattributes; the root launchers are covered below.
+* text=auto
+*.md text eol=lf
+*.txt text eol=lf
+*.py text eol=lf
+*.js text eol=lf
+*.mjs text eol=lf
+*.ts text eol=lf
+*.yaml text eol=lf
+*.toml text eol=lf
+*.cmd text eol=crlf
+.gitignore text eol=lf
+.gitattributes text eol=lf
+LICENSE text eol=lf
+NOTICE text eol=lf
+
+# The root sh launcher is polyglot: CRLF keeps the cmd half happy; sh ignores the CR after line 1's #.
+/ws text eol=crlf
+
+# State files that several people or agents append to: merge both sides' lines instead of conflicting.
+# A finished task that comes back after a merge is caught by `ws sweep`; a duplicated id by `ws check`.
+tasks.md merge=union
+_workboard/open-items.md merge=union
+_workboard/people/*/log/*.md merge=union

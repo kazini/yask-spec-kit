@@ -1,0 +1,7 @@
+name: software
+description: "Software documentation standards: component documents (requirements, then design), stage documents, gates and traceability."
+default: true
+requires: [knowledge, decisions]
+where:
+  - { holds: "A build stage in practical terms, with the criteria that gate moving on", path: "_workboard/stages/", kind: working }
+checks: [ids-unique-never-reused, trace-refs-resolve, invariants-name-a-check, approved-before-tasks, predicates-defined, criteria-name-a-check, checks-resolve]

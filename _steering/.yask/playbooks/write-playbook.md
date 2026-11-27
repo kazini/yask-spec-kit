@@ -1,0 +1,16 @@
+---
+kind: steering
+module: playbooks
+use_when: "Write a project playbook for a repeating procedure, or revise one whose routing or steps are poor: new procedure, runbook, checklist"
+description: "Draft or revise a playbook: capture intent, write routing words, check it wins its queries, and leave a manual path."
+---
+# Write or improve a playbook
+
+Template: `_steering/.yask/templates/playbook.md`. A playbook for this project goes in `_steering/playbooks/` (routed automatically); never edit the shipped ones in `_steering/.yask/playbooks/`. To change one, `ws steering copy playbooks/<name>.md` and edit the copy: it supersedes the shipped file at the same path. To replace one under another name, or several, or to retire them, put `override: [playbooks/<name>.md, ...]` on top (front matter) of the new playbook, or run `ws steering override playbooks/<name>.md --why "..."`; `ws steering restore` undoes it. Keep the shipped `use_when` and `module` in a copy so routing stays the same. Write `use_when` in the words people actually use, synonyms included ("change order", "the contractor wants more"): routing matches words. Name the file for what the agent does, verb first (`record-decision`); a reference method may be a noun (`software-standards`). Lowercase words joined by hyphens; `ws playbooks --check` flags other names. Tools: `ws playbooks --check`, `ws route "<query>"`.
+1. Capture intent. What must the agent be able to do; in which situations does it apply, including ones that never name it; what is the result; what can be verified. Take it from the conversation first: steps taken, corrections made, formats seen. Repeated work is the signal: when sessions keep rediscovering the same steps or scripts, write a playbook or a tool (`_tools/`).
+2. Draft. `use_when` is the routing signal: say what the playbook does and the situations that call for it, even when they do not name it, and lean towards matching too often over too rarely. Keep all when-to-use text out of the body. The body is imperative steps for one purpose, says why a step matters instead of shouting MUST, stays general instead of tied to one example, and gives a manual path for every tool step. Follow `document-format.md` for short writing; point to deeper material and say when to read it.
+3. Check routing. `ws playbooks --check` flags vague or overlapping `use_when` lines. Run `ws route "<query>"` on 8 to 10 realistic queries that should trigger it and 8 to 10 near-misses that share words but need something else. Rewrite `use_when` until it wins its queries and loses the near-misses.
+4. Write 2 or 3 realistic cases in `docs/evals/`: what a person would actually type, the result that counts as good, what must not happen. Assertions must be verifiable; leave taste to human review.
+5. Run each case with the playbook and without it (when improving, against a copy of the old version), in fresh sessions (`run-evals.md`). Record pass or fail per assertion, tool calls and tokens.
+6. Read the transcripts, not only the results. Remove steps that waste effort. Generalize from failures instead of patching for one case. If every run wrote the same helper, make it a tool.
+7. Repeat from step 5 until results stop improving. Regenerate the router (`ws check --fix-generated`).

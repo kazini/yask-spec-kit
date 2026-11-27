@@ -1,0 +1,102 @@
+name: Release YASK
+run-name: "Release from VERSION"
+
+# A manual workflow_dispatch publishes a release tagged v<version>.
+# The assets are exactly what ws update looks for: yask-<version>.zip (the workspace template) and its .sha256.
+on:
+  workflow_dispatch:
+    inputs:
+      notes:
+        description: "Release notes; blank uses the last commit message"
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+# Never let two runs recreate or replace the same tag at once.
+concurrency:
+  group: release-yask
+  cancel-in-progress: false
+
+jobs:
+  # A release is published only from a commit whose whole test suite passes (tests.yaml: one current Python, also used for the build).
+  tests:
+    uses: ./.github/workflows/tests.yaml
+    permissions:
+      contents: read
+
+  release:
+    needs: tests
+    if: github.event_name == 'workflow_dispatch' || github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Read VERSION
+        id: version
+        shell: bash
+        run: |
+          set -euo pipefail
+          version="$(tr -d '[:space:]' < _steering/.yask/VERSION)"
+          if ! [[ "$version" =~ ^[0-9]+(\.[0-9]+){0,3}$ ]]; then
+            echo "::error::_steering/.yask/VERSION must be numeric, got '$version'"
+            exit 1
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "tag=v$version" >> "$GITHUB_OUTPUT"
+
+      # build_release.py first syncs root LICENSE and README.md -> .yask/LICENSE and .yask/YASK.md when missing or different; NOTICE ships from the layer.
+      # Build before touching the release: a failed build must not break an existing good release.
+      - name: Build release files
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 .dev_yask/build_release.py --out dist
+          ls -l dist
+
+      # The build already refuses a zip with wrong modes. This unpacks the real release zip with unzip, which keeps stored modes, and runs
+      # every launcher directly (no `sh` in front), so a release whose ws, shims or ws.py cannot start never gets published.
+      - name: Smoke-test the packages
+        shell: bash
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          set -euo pipefail
+          work="$(mktemp -d)"
+          unzip -q "dist/yask-$VERSION.zip" -d "$work/ws"
+          cd "$work/ws"
+          tool=_steering/.yask/_toolstore
+          for f in ws $tool/_shims/ws $tool/_shims/yask $tool/ws/ws $tool/ws/yask $tool/ws/ws.py; do
+            [ -x "$f" ] || { echo "::error::$f is not executable in yask-$VERSION.zip"; exit 1; }
+          done
+          export YASK_AUTOUPDATE=0 YASK_LIFECYCLE=0
+          ./ws --version
+          for f in $tool/_shims/ws $tool/_shims/yask $tool/ws/ws $tool/ws/yask $tool/ws/ws.py; do "$f" --version; done
+          ./ws check
+
+      - name: Publish release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ steps.version.outputs.tag }}
+          TARGET: ${{ github.sha }}
+          NOTES: ${{ inputs.notes }}
+        run: |
+          set -euo pipefail
+          assets=(dist/yask-*.zip dist/yask-*.zip.sha256)
+          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "Release $TAG already exists; replacing it at $TARGET"
+            gh release delete "$TAG" --yes --cleanup-tag --repo "$GITHUB_REPOSITORY"
+          elif git ls-remote --exit-code --tags origin "refs/tags/$TAG" >/dev/null 2>&1; then
+            echo "Tag $TAG exists without a release; removing it"
+            git push --delete origin "$TAG"
+          fi
+          notes="${NOTES:-$(git log -1 --pretty=%B "$TARGET")}"
+          gh release create "$TAG" --target "$TARGET" --title "$TAG" --notes "${notes:-Release $TAG}" --repo "$GITHUB_REPOSITORY" "${assets[@]}"

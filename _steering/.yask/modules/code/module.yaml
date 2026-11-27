@@ -1,0 +1,14 @@
+name: code
+description: "The product's code in code/, plus an optional code outline and symbol graph. Language-agnostic core with pluggable adapters."
+default: false
+requires: [core]
+where:
+  - { holds: "The product's code: one subfolder per program or module, each with its own src, tests and build files", path: "code/", kind: any }
+adapters: []   # selected by file extension, e.g. { ext: [py], via: tree-sitter }; none means a plain file outline
+tiers: [symbol-index, import-graph, call-graph, precise-references]   # served through outline, find, callers, path, related, impact
+notes: |
+  Component documents in docs/architecture/ name the code they describe with covers: code/<program>/**.
+  Generated data lives in _steering/.ws/cache/ (not committed) or as a snapshot tagged with the commit.
+  Call-graph edges carry confidence: syntactic. The model only writes each module's purpose as a docstring.
+  An MCP wrapper is optional: read-only, about five tools; the project never depends on it.
+checks: [module-purpose-present, symbol-references-resolve, covers-resolve]

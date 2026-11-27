@@ -1,0 +1,41 @@
+# Workspace configuration. Defaults; adjust per project.
+naming: { ignore: [], allow: [] }   # ws check naming warnings skip `ignore` paths and accept `allow` names
+lifecycle:
+  git: true                    # create the git repository that keeps the history when there is none
+  heal: true                   # settle a merge that stopped on conflicts by rule (ws sync does the same on demand)
+  sweep: true                  # close finished tasks and park untouched STARTED ones while ws runs
+  sweep_hours: 1
+  autosave: true               # keep rolling snapshots of uncommitted work outside the branch (ws restore); a commit clears them
+  autosave_minutes: 10         # at most this often
+  autosave_keep: 3             # how many; when full the snapshot adding least is dropped, so the kept ones differ as much as possible
+secrets:
+  agent_read: run              # what agents may do with ws secret: run = use secrets (run) but not print them (get, expand);
+                               # true = also print them; false = nothing. A person is never limited. `run` hides the literal value only.
+  temp_hours: 24               # how long a temporary secret an agent supplies lasts
+people: []                    # optional: names allowed as deciders of accepted decisions (empty = any)
+modules:
+  enabled: [core, knowledge, meetings, decisions, collab, software]   # live setting; each manifest's `default` only seeds new projects
+budgets:
+  agents_md_lines: 150
+  whole_read_kb: 25      # a nudge to read by section, not a limit
+thresholds:
+  blob_warn_mb: 5
+  blob_error_mb: 25
+  growth_warn_ratio: 0.25     # growth per review period
+  maintenance_stale_days: 60
+  stale_branch_days: 30
+  open_item_stale_days: 30
+  log_fold_lines: 3           # a new log line about an id with this many earlier lines prints a fold reminder
+  task_stale_days: 30         # an OPEN task or item nobody touched for this long is listed by ws sweep
+  status_stale_commits: 20    # status_log.md unchanged for this many commits is flagged
+  status_stale_days: 21       # ... or this many days, once at least 5 commits have passed
+  history_scan_commits: 200   # cap one bounded history lookback; 50..500, so an old repo stays cheap
+tasks:
+  stale_started_hours: 24     # a STARTED task with no log line for this long is stale
+git:
+  review: agent                 # off | agent | all: which changes to canon and steering wait for a person (ws review); git itself only keeps history
+  main_branch: main
+  ai_attribution: trailer       # none | trailer | co-author; set from the client contract
+  agent_author: true            # agent commits are authored as <you>+agent (or +$WS_AGENT); you stay the committer
+  squash_gap_minutes: 30        # ws squash joins same-author, same-area commits closer together than this
+  trailers: [Ws-Task]

@@ -1,0 +1,8 @@
+name: collab
+description: "Per-person logs, state kept current as work happens, and path policy for one or more people with agents."
+default: true
+requires: [core]
+where:
+  - { holds: "What happened (your append-only log, one file per UTC day)", path: "_workboard/people/<you>/log/", kind: personal }
+  - { holds: "Your drafts and scratch files", path: "_workboard/people/<you>/", kind: personal }
+checks: [task-ids-resolve, label-syntax, stale-started]

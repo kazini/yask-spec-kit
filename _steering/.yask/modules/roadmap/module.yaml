@@ -1,0 +1,7 @@
+name: roadmap
+description: Dated milestones for the project's own planning; tasks point at them with ms=. Calendars and budgets stay in the team's own tools.
+default: false
+requires: [core]
+where:
+  - { holds: "A milestone: an outcome with a date that tasks work toward", path: "docs/roadmap.md", kind: canon }
+checks: [milestone-attributes, ms-resolves]

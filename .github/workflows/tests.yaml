@@ -1,0 +1,29 @@
+name: Tests
+run-name: "Tests"
+
+# The suite runs on one current Python; releases are built on the same version, so a version-specific break shows up here first.
+# The tests are hermetic: no git identity, signing or hooks of the runner are used.
+# release.yaml calls this file (workflow_call) and publishes only if it passes.
+on:
+  push:
+  pull_request:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: ubuntu-latest, python: "3.13" }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Run the tests
+        run: python3 .dev_yask/run_tests.py

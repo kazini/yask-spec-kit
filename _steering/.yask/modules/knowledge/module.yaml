@@ -1,0 +1,10 @@
+name: knowledge
+description: "Curated project documentation: context, product, architecture and specs, plus how to write and keep documents."
+default: true
+requires: [core]
+where:
+  - { holds: "Project background, glossary, stakeholders and roles, constraints such as contract terms", path: "docs/context/", kind: canon }
+  - { holds: "Product knowledge, one owning document per topic", path: "docs/product/", kind: canon }
+  - { holds: "Technical components and cross-component topics", path: "docs/architecture/", kind: canon }
+  - { holds: "A specification of what to build that is not a technical component (feature or product spec)", path: "docs/specs/", kind: canon }
+checks: [front-matter, size-report, links, cites-resolve]

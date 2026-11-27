@@ -1,0 +1,7 @@
+name: playbooks
+description: "Project playbooks: procedures that repeat in this project, written, tested and improved by agents and people."
+default: false
+requires: [core, evals]
+where:
+  - { holds: "A procedure that repeats in this project, as a playbook (routed from AGENTS.md like the steering ones)", path: "_steering/playbooks/", kind: steering }
+checks: [use-when-specific, use-when-unique, front-matter]

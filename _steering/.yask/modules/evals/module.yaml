@@ -1,0 +1,7 @@
+name: evals
+description: "Test cases for the workspace itself: questions and scenarios with expected sources and failure conditions."
+default: false
+requires: [core]
+where:
+  - { holds: "A test case for how well agents use this workspace", path: "docs/evals/", kind: canon }
+checks: [front-matter, case-schema]
